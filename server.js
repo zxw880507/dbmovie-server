@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 const cookieSession = require("cookie-session");
-const port = 8000;
+const port = process.env.PORT || 8000;
 require("./src/db");
 
 // express middleware
