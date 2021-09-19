@@ -19,6 +19,7 @@ router.post("/register", (req, res) => {
 
 router.get("/login", (req, res) => {
   const email = req.session.email;
+  console.log(email);
   if (!email) {
     res.send(null);
     return;
