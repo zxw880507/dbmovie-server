@@ -15,7 +15,7 @@ app.use(
     name: "session",
     keys: ["key1", "key2"],
     maxAge: 24 * 60 * 60 * 1000,
-    domain: process.env.DOMAIN || "localhost",
+    // domain: process.env.DOMAIN || "localhost",
   })
 );
 
