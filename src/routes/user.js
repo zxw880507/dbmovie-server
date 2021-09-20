@@ -34,6 +34,7 @@ router.get("/login", (req, res) => {
         res.send(null);
       }
       res.json({ userId: user.id, email: user.email });
+      res.redirect("/");
     })
     .catch((err) => {
       throw err;
