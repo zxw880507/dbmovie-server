@@ -8,8 +8,8 @@ router.post("/register", (req, res) => {
   User.create({ email, password })
     .then((user) => {
       console.log("user registered!!!!");
-      // req.session.email = user.email;
-      res.cookie("email", user.email);
+      req.session.email = user.email;
+
       res.json({ email: user.email });
     })
     .catch((err) => {
@@ -19,9 +19,8 @@ router.post("/register", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  // const email = req.session.email;
-  const email = req.cookies.email;
-  console.log(email);
+  const email = req.session.email;
+
   if (!email) {
     res.send(null);
     return;
@@ -55,8 +54,8 @@ router.post("/login", (req, res) => {
       } else if (!user.comparePassword(password)) {
         res.status(400).send({ password: "Password didn't match. Try again." });
       } else {
-        // req.session.email = user.email;
-        res.cookie("email", user.email);
+        req.session.email = user.email;
+
         res.json({ userId: user.id, email: user.email });
       }
     })
