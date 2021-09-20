@@ -18,7 +18,14 @@ app.use(
   })
 );
 
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.FRONT_END_URL
+      ? process.env.FRONT_END_URL
+      : "http://localhost:3000",
+  })
+);
 app.use(json());
 
 app.use(urlencoded({ extended: false }));
