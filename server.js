@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 require("dotenv").config();
-const cookieSession = require("cookie-session");
+const cookieParser = require("cookie-parser");
+// const cookieSession = require("cookie-session");
 const port = process.env.PORT || 8000;
 require("./src/db");
 
@@ -10,16 +11,13 @@ require("./src/db");
 const { json, urlencoded } = express;
 const { join } = require("path");
 
-app.set("trust proxy", 1);
-app.use(
-  cookieSession({
-    name: "session",
-    keys: ["key1", "key2"],
-    sameSite: "none",
-    secure: true,
-  })
-);
-
+// app.use(
+//   cookieSession({
+//     name: "session",
+//     keys: ["key1", "key2"],
+//   })
+// );
+app.use(cookieParser(["key1", "key2"]));
 app.use(cors());
 app.use(json());
 
