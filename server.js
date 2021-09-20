@@ -10,6 +10,7 @@ require("./src/db");
 const { json, urlencoded } = express;
 const { join } = require("path");
 
+app.set("trust proxy", 1);
 app.use(
   cookieSession({
     name: "session",
