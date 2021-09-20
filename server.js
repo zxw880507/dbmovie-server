@@ -11,6 +11,8 @@ require("./src/db");
 const { json, urlencoded } = express;
 const { join } = require("path");
 
+app.use(cors({ origin: true, credentials: true }));
+
 app.use(
   cookieSession({
     name: "session",
@@ -18,7 +20,6 @@ app.use(
   })
 );
 
-app.use(cors());
 app.use(json());
 
 app.use(urlencoded({ extended: false }));
