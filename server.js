@@ -15,6 +15,8 @@ app.use(
   cookieSession({
     name: "session",
     keys: ["key1", "key2"],
+    sameSite: "none",
+    secure: true,
   })
 );
 
